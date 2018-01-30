@@ -7,6 +7,7 @@
 //
 
 #import "AddViewController.h"
+#import "TableModule.h"
 
 @interface AddViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *titleTextView;
@@ -19,6 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -27,6 +29,8 @@
 }
 
 - (IBAction)saveButton:(id)sender {
+    [self.tableModule saveTodo:self.titleTextView.text description:self.descriptionTextView.text];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

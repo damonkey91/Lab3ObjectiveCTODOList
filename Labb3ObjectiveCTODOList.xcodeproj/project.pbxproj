@@ -14,7 +14,7 @@
 		72F774FA201F87EB006E3179 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F774F9201F87EB006E3179 /* main.m */; };
 		72F77502201F907C006E3179 /* TodoListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F77501201F907C006E3179 /* TodoListTableViewController.m */; };
 		72F77505201F90AF006E3179 /* AddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F77504201F90AF006E3179 /* AddViewController.m */; };
-		72F77508201F9419006E3179 /* tableModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F77507201F9419006E3179 /* tableModule.m */; };
+		72F77508201F9419006E3179 /* TableModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F77507201F9419006E3179 /* TableModule.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,8 +30,8 @@
 		72F77501201F907C006E3179 /* TodoListTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodoListTableViewController.m; sourceTree = "<group>"; };
 		72F77503201F90AF006E3179 /* AddViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddViewController.h; sourceTree = "<group>"; };
 		72F77504201F90AF006E3179 /* AddViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddViewController.m; sourceTree = "<group>"; };
-		72F77506201F9419006E3179 /* tableModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tableModule.h; sourceTree = "<group>"; };
-		72F77507201F9419006E3179 /* tableModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = tableModule.m; sourceTree = "<group>"; };
+		72F77506201F9419006E3179 /* TableModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableModule.h; sourceTree = "<group>"; };
+		72F77507201F9419006E3179 /* TableModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableModule.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,8 +68,8 @@
 				72F774EB201F87EB006E3179 /* AppDelegate.m */,
 				72F77500201F907C006E3179 /* TodoListTableViewController.h */,
 				72F77501201F907C006E3179 /* TodoListTableViewController.m */,
-				72F77506201F9419006E3179 /* tableModule.h */,
-				72F77507201F9419006E3179 /* tableModule.m */,
+				72F77506201F9419006E3179 /* TableModule.h */,
+				72F77507201F9419006E3179 /* TableModule.m */,
 				72F77503201F90AF006E3179 /* AddViewController.h */,
 				72F77504201F90AF006E3179 /* AddViewController.m */,
 				72F774F0201F87EB006E3179 /* Main.storyboard */,
@@ -153,7 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				72F77502201F907C006E3179 /* TodoListTableViewController.m in Sources */,
-				72F77508201F9419006E3179 /* tableModule.m in Sources */,
+				72F77508201F9419006E3179 /* TableModule.m in Sources */,
 				72F774FA201F87EB006E3179 /* main.m in Sources */,
 				72F77505201F90AF006E3179 /* AddViewController.m in Sources */,
 				72F774EC201F87EB006E3179 /* AppDelegate.m in Sources */,

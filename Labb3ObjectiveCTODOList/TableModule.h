@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface tableModule : NSObject
-
+@interface TableModule : NSObject
+-(void)saveTodo:(NSString*) title description:(NSString*)text;
+-(int)getSections;
+-(int)getRows;
+-(NSString*)getTodoTitle:(int) row;
 @end

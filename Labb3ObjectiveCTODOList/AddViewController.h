@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TableModule.h"
 
 @interface AddViewController : UIViewController
-
+@property (nonatomic) TableModule *tableModule;
 @end
