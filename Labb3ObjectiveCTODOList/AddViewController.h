@@ -11,4 +11,9 @@
 
 @interface AddViewController : UIViewController
 @property (nonatomic) TableModule *tableModule;
+@property (weak, nonatomic) IBOutlet UITextField *titleTextView;
+@property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
+@property (nonatomic) BOOL oldTodo;
+@property (nonatomic) int section;
+@property (nonatomic) int row;
 @end

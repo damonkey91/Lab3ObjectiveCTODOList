@@ -107,6 +107,12 @@
     
     AddViewController *controller = [segue destinationViewController];
     controller.tableModule = self.tableModule;
+    if ([segue.identifier isEqualToString: @"detailSegue"]) {
+        CustomTableViewCell *cell = sender;
+        controller.oldTodo = YES;
+        controller.section = cell.section;
+        controller.row = cell.row;
+    }
 }
 
 

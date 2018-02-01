@@ -10,8 +10,7 @@
 #import "TableModule.h"
 
 @interface AddViewController ()
-@property (weak, nonatomic) IBOutlet UITextField *titleTextView;
-@property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
+
 
 @end
 
@@ -20,6 +19,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    if (self.oldTodo) {
+        self.titleTextView.text = [self.tableModule getTodoTitle:self.row fromSection:self.section];
+        self.descriptionTextView.text = [self.tableModule getDescriptionFromRow:self.row Section:self.section];
+    }
     
 }
 
@@ -29,7 +32,7 @@
 }
 
 - (IBAction)saveButton:(id)sender {
-    [self.tableModule saveTodo:self.titleTextView.text description:self.descriptionTextView.text];
+    [self.tableModule saveTodo:self.titleTextView.text description:self.descriptionTextView.text inSection:self.section row:self.row if:self.oldTodo];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

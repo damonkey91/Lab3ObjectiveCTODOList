@@ -38,8 +38,17 @@ NSString* const KEY_FINISHEDLIST = @"finishedlist";
     return self;
 }
 
--(void)saveTodo:(NSString*) title description:(NSString*)text{
-    [self.todoList addObject:@{KEY_TODO:title, KEY_DESCRIPTION:text}];
+-(void)saveTodo:(NSString*) title description:(NSString*)text inSection:(int)section row:(int)row if:(BOOL)condition{
+    
+    if (condition) {
+        if (section == 0) {
+            
+            [self.todoList replaceObjectAtIndex:row withObject:@{KEY_TODO:title, KEY_DESCRIPTION:text}];
+        }else
+            [self.finishedList replaceObjectAtIndex:row withObject:@{KEY_TODO:title, KEY_DESCRIPTION:text}];
+    }else
+        [self.todoList addObject:@{KEY_TODO:title, KEY_DESCRIPTION:text}];
+    [self nsuserSave];
 }
 
 -(int)getSections{
@@ -59,7 +68,13 @@ NSString* const KEY_FINISHEDLIST = @"finishedlist";
         return [self.todoList[row] valueForKey:KEY_TODO];
     }else
         return [self.finishedList[row] valueForKey:KEY_TODO];
-    
+}
+
+-(NSString*)getDescriptionFromRow:(int)row Section:(int)section{
+    if (section == 0) {
+        return [self.todoList[row] valueForKey:KEY_DESCRIPTION];
+    }else
+        return [self.finishedList[row] valueForKey:KEY_DESCRIPTION];
 }
 
 -(void)changeSection:(int)section row:(int)row{
@@ -71,10 +86,15 @@ NSString* const KEY_FINISHEDLIST = @"finishedlist";
         [self.todoList addObject: self.finishedList[row]];
         [self.finishedList removeObjectAtIndex:row];
     }
+    [self nsuserSave];
+}
+
+-(void)nsuserSave{
+    [self.defaults setObject:self.todoList forKey:KEY_TODOLIST];
+    [self.defaults setObject:self.finishedList forKey:KEY_FINISHEDLIST];
 }
 
 @end
 
-//return rows
-//save arrays
-//change between todo and finished
+//extra viktig
+//klicka på en todo kunna redigera
