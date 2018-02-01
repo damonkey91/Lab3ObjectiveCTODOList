@@ -11,6 +11,7 @@
 @interface TableModule : NSObject
 -(void)saveTodo:(NSString*) title description:(NSString*)text;
 -(int)getSections;
--(int)getRows;
--(NSString*)getTodoTitle:(int) row;
+-(int)getRowsForSection:(int)section;
+-(NSString*)getTodoTitle:(int) row fromSection:(int)section;
+-(void)changeSection:(int)section row:(int)row;
 @end

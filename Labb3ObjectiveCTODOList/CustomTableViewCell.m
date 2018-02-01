@@ -8,6 +8,7 @@
 
 #import "CustomTableViewCell.h"
 
+
 @interface CustomTableViewCell()
 
 @end
@@ -29,7 +30,8 @@
 }
 
 - (IBAction)buttonClicked:(id)sender {
-    self.backgroundColor = [UIColor redColor];
+    [self.tableModule changeSection:self.section row:self.row];
+    [self.tableView reloadData];
 }
 
 @end

@@ -10,15 +10,30 @@
 
 @interface TableModule ()
 @property (nonatomic) NSMutableArray *todoList;
+@property (nonatomic) NSMutableArray *finishedList;
+@property (nonatomic) NSUserDefaults *defaults;
 @end
+
 NSString* const KEY_TODO = @"todo";
 NSString* const KEY_DESCRIPTION = @"description";
+NSString* const KEY_TODOLIST = @"todolist";
+NSString* const KEY_FINISHEDLIST = @"finishedlist";
 @implementation TableModule
 
 -(instancetype)init{
     self = [super init];
     if (self) {
-        self.todoList = [[NSMutableArray alloc] init];
+        self.defaults = [NSUserDefaults standardUserDefaults];
+        
+        if ([self.defaults objectForKey:KEY_TODOLIST]) {
+            self.todoList = [NSMutableArray arrayWithArray: [self.defaults objectForKey:KEY_TODOLIST]];
+        }else
+            self.todoList = [[NSMutableArray alloc] init];
+        
+        if ([self.defaults objectForKey:KEY_FINISHEDLIST]) {
+            self.finishedList = [NSMutableArray arrayWithArray: [self.defaults objectForKey:KEY_FINISHEDLIST]];
+        }else
+            self.finishedList = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -28,16 +43,38 @@ NSString* const KEY_DESCRIPTION = @"description";
 }
 
 -(int)getSections{
-    return 1;
+    return 2;
 }
 
--(int)getRows{
-    return self.todoList.count;
+-(int)getRowsForSection:(int)section{
+    if (section == 0) {
+        return self.todoList.count;
+    }else
+        return self.finishedList.count;
+    
 }
 
--(NSString*)getTodoTitle:(int) row{
-    return [self.todoList[row] valueForKey:KEY_TODO];
+-(NSString*)getTodoTitle:(int) row fromSection:(int)section{
+    if (section == 0) {
+        return [self.todoList[row] valueForKey:KEY_TODO];
+    }else
+        return [self.finishedList[row] valueForKey:KEY_TODO];
+    
 }
 
+-(void)changeSection:(int)section row:(int)row{
+    
+    if (section == 0) {
+        [self.finishedList addObject: self.todoList[row]];
+        [self.todoList removeObjectAtIndex:row];
+    } else{
+        [self.todoList addObject: self.finishedList[row]];
+        [self.finishedList removeObjectAtIndex:row];
+    }
+}
 
 @end
+
+//return rows
+//save arrays
+//change between todo and finished

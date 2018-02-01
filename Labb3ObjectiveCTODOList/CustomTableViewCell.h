@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TableModule.h"
 
 @interface CustomTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIButton *button;
-
+@property (nonatomic) int row;
+@property (nonatomic) int section;
+@property (nonatomic) TableModule *tableModule;
+@property (nonatomic) UITableView *tableView;
 
 @end

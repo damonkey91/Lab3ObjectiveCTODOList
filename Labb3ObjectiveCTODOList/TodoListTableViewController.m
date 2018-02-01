@@ -46,14 +46,17 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.tableModule getRows];
+    return [self.tableModule getRowsForSection:section];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"tableIdentifier" forIndexPath:indexPath];
-    int row = indexPath.row;
-    cell.textLabel.text = [self.tableModule getTodoTitle:row];
+    cell.textLabel.text = [self.tableModule getTodoTitle:indexPath.row fromSection:indexPath.section];
+    cell.row = indexPath.row;
+    cell.section = indexPath.section;
+    cell.tableModule = self.tableModule;
+    cell.tableView = self.tableView;
     
     return cell;
 }
