@@ -15,4 +15,6 @@
 -(NSString*)getTodoTitle:(int) row fromSection:(int)section;
 -(void)changeSection:(int)section row:(int)row;
 -(NSString*)getDescriptionFromRow:(int)row Section:(int)section;
+-(void)setImportantForSection:(int)section Row:(int)row;
+-(BOOL)getImportantForSection:(int)section Row:(int)row;
 @end

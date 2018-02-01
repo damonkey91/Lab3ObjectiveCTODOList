@@ -33,5 +33,13 @@
     [self.tableModule changeSection:self.section row:self.row];
     [self.tableView reloadData];
 }
+- (IBAction)importantButton:(id)sender {
+    [self.tableModule setImportantForSection:self.section Row:self.row];
+    BOOL important = [self.tableModule getImportantForSection:self.section Row:self.row];
+    if (important) {
+        self.backgroundColor = [UIColor blueColor];
+    } else
+        self.backgroundColor = [UIColor whiteColor];
+}
 
 @end

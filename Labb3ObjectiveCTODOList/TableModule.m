@@ -18,6 +18,8 @@ NSString* const KEY_TODO = @"todo";
 NSString* const KEY_DESCRIPTION = @"description";
 NSString* const KEY_TODOLIST = @"todolist";
 NSString* const KEY_FINISHEDLIST = @"finishedlist";
+NSString* const KEY_IMPORTANT = @"important";
+
 @implementation TableModule
 
 -(instancetype)init{
@@ -41,13 +43,10 @@ NSString* const KEY_FINISHEDLIST = @"finishedlist";
 -(void)saveTodo:(NSString*) title description:(NSString*)text inSection:(int)section row:(int)row if:(BOOL)condition{
     
     if (condition) {
-        if (section == 0) {
-            
-            [self.todoList replaceObjectAtIndex:row withObject:@{KEY_TODO:title, KEY_DESCRIPTION:text}];
-        }else
-            [self.finishedList replaceObjectAtIndex:row withObject:@{KEY_TODO:title, KEY_DESCRIPTION:text}];
+        NSMutableArray *array = [self chooseArrayFromSection:section];
+        [array replaceObjectAtIndex:row withObject:@{KEY_TODO:title, KEY_DESCRIPTION:text, KEY_IMPORTANT:@0}];
     }else
-        [self.todoList addObject:@{KEY_TODO:title, KEY_DESCRIPTION:text}];
+        [self.todoList addObject:@{KEY_TODO:title, KEY_DESCRIPTION:text, KEY_IMPORTANT:@0}];
     [self nsuserSave];
 }
 
@@ -56,29 +55,21 @@ NSString* const KEY_FINISHEDLIST = @"finishedlist";
 }
 
 -(int)getRowsForSection:(int)section{
-    if (section == 0) {
-        return self.todoList.count;
-    }else
-        return self.finishedList.count;
-    
+    NSMutableArray *array = [self chooseArrayFromSection:section];
+    return array.count;
 }
 
 -(NSString*)getTodoTitle:(int) row fromSection:(int)section{
-    if (section == 0) {
-        return [self.todoList[row] valueForKey:KEY_TODO];
-    }else
-        return [self.finishedList[row] valueForKey:KEY_TODO];
+    NSMutableArray *array = [self chooseArrayFromSection:section];
+    return [array[row] valueForKey:KEY_TODO];
 }
 
 -(NSString*)getDescriptionFromRow:(int)row Section:(int)section{
-    if (section == 0) {
-        return [self.todoList[row] valueForKey:KEY_DESCRIPTION];
-    }else
-        return [self.finishedList[row] valueForKey:KEY_DESCRIPTION];
+    NSMutableArray *array = [self chooseArrayFromSection:section];
+    return [array[row] valueForKey:KEY_DESCRIPTION];
 }
 
 -(void)changeSection:(int)section row:(int)row{
-    
     if (section == 0) {
         [self.finishedList addObject: self.todoList[row]];
         [self.todoList removeObjectAtIndex:row];
@@ -94,7 +85,30 @@ NSString* const KEY_FINISHEDLIST = @"finishedlist";
     [self.defaults setObject:self.finishedList forKey:KEY_FINISHEDLIST];
 }
 
+-(void)setImportantForSection:(int)section Row:(int)row{
+    NSMutableArray *array = [self chooseArrayFromSection:section];
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    [dict addEntriesFromDictionary: array[row]];
+        if ([[array[row] valueForKey:KEY_IMPORTANT] boolValue]) {
+            [dict setObject:@0 forKey:KEY_IMPORTANT];
+        }else{
+            [dict setObject:@1 forKey:KEY_IMPORTANT];
+        }
+    [array replaceObjectAtIndex:row withObject:dict];
+}
+
+-(BOOL)getImportantForSection:(int)section Row:(int)row{
+    NSMutableArray *array = [self chooseArrayFromSection:section];
+        return [[array[row] valueForKey:KEY_IMPORTANT] boolValue];
+}
+
+-(NSMutableArray*)chooseArrayFromSection:(int)section{
+    if (section == 0) {
+        return self.todoList;
+    }else
+        return self.finishedList;
+}
 @end
 
 //extra viktig
-//klicka på en todo kunna redigera
+//Ändra knappar till touch och swipe
