@@ -9,6 +9,7 @@
 #import "TodoListTableViewController.h"
 #import "TableModule.h"
 #import "AddViewController.h"
+#import "CustomTableViewCell.h"
 
 @interface TodoListTableViewController ()
 @property (nonatomic) TableModule *tableModule;
@@ -41,23 +42,22 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
     return [self.tableModule getSections];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
     return [self.tableModule getRows];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"tableIdentifier" forIndexPath:indexPath];
+    CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: @"tableIdentifier" forIndexPath:indexPath];
     int row = indexPath.row;
     cell.textLabel.text = [self.tableModule getTodoTitle:row];
     
     return cell;
 }
+
 
 
 /*

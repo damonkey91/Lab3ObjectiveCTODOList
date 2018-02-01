@@ -15,6 +15,7 @@
 		72F77502201F907C006E3179 /* TodoListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F77501201F907C006E3179 /* TodoListTableViewController.m */; };
 		72F77505201F90AF006E3179 /* AddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F77504201F90AF006E3179 /* AddViewController.m */; };
 		72F77508201F9419006E3179 /* TableModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F77507201F9419006E3179 /* TableModule.m */; };
+		72F7753020232976006E3179 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F7752F20232976006E3179 /* CustomTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,8 @@
 		72F77504201F90AF006E3179 /* AddViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddViewController.m; sourceTree = "<group>"; };
 		72F77506201F9419006E3179 /* TableModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableModule.h; sourceTree = "<group>"; };
 		72F77507201F9419006E3179 /* TableModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableModule.m; sourceTree = "<group>"; };
+		72F7752E20232976006E3179 /* CustomTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
+		72F7752F20232976006E3179 /* CustomTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +71,8 @@
 				72F774EB201F87EB006E3179 /* AppDelegate.m */,
 				72F77500201F907C006E3179 /* TodoListTableViewController.h */,
 				72F77501201F907C006E3179 /* TodoListTableViewController.m */,
+				72F7752E20232976006E3179 /* CustomTableViewCell.h */,
+				72F7752F20232976006E3179 /* CustomTableViewCell.m */,
 				72F77506201F9419006E3179 /* TableModule.h */,
 				72F77507201F9419006E3179 /* TableModule.m */,
 				72F77503201F90AF006E3179 /* AddViewController.h */,
@@ -154,6 +159,7 @@
 			files = (
 				72F77502201F907C006E3179 /* TodoListTableViewController.m in Sources */,
 				72F77508201F9419006E3179 /* TableModule.m in Sources */,
+				72F7753020232976006E3179 /* CustomTableViewCell.m in Sources */,
 				72F774FA201F87EB006E3179 /* main.m in Sources */,
 				72F77505201F90AF006E3179 /* AddViewController.m in Sources */,
 				72F774EC201F87EB006E3179 /* AppDelegate.m in Sources */,
