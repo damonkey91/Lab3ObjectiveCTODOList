@@ -95,6 +95,7 @@ NSString* const KEY_IMPORTANT = @"important";
             [dict setObject:@1 forKey:KEY_IMPORTANT];
         }
     [array replaceObjectAtIndex:row withObject:dict];
+    [self nsuserSave];
 }
 
 -(BOOL)getImportantForSection:(int)section Row:(int)row{
@@ -110,5 +111,4 @@ NSString* const KEY_IMPORTANT = @"important";
 }
 @end
 
-//extra viktig
 //Ändra knappar till touch och swipe

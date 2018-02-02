@@ -22,7 +22,6 @@
     
     self.tableModule = [[TableModule alloc] init];
     
-    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -57,7 +56,10 @@
     cell.section = indexPath.section;
     cell.tableModule = self.tableModule;
     cell.tableView = self.tableView;
-    
+    if ([self.tableModule getImportantForSection:indexPath.section Row:indexPath.row]) {
+        cell.backgroundColor = [UIColor blueColor];
+    }else
+        cell.backgroundColor = [UIColor whiteColor];
     return cell;
 }
 
@@ -113,6 +115,15 @@
         controller.section = cell.section;
         controller.row = cell.row;
     }
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    if (section == 0) {
+        return @"Att göra";
+    } else if(section == 1)
+        return @"Klara";
+    else
+        return @"empty";
 }
 
 @end
